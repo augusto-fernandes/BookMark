@@ -41,4 +41,14 @@ public class BookService {
     public void delete(Integer id) {
         repository.deleteById(id);
     }
+
+    public Book update(Integer id, Book book){
+        Book newBook = findById(id);
+        newBook.setTitle(book.getTitle());
+        newBook.setPage(book.getPage());
+        newBook.setLink(book.getLink());
+        newBook.setComplete(book.isComplete());
+        return repository.save(newBook);
+
+    }
 }

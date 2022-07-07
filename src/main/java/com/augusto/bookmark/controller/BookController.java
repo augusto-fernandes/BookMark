@@ -13,6 +13,9 @@ import java.util.List;
 @RequestMapping(value = "books")
 public class BookController {
 
+    public static final String ID = "/{id}";
+
+
     @Autowired
     private BookService service;
 
@@ -22,7 +25,7 @@ public class BookController {
         return ResponseEntity.ok().body(list);
     }
 
-    @GetMapping(value = "{id}")
+    @GetMapping(value = ID)
     public ResponseEntity<Book> findById(@PathVariable Integer id){
         Book book = service.findById(id);
         return ResponseEntity.ok().body(book);
@@ -45,11 +48,16 @@ public class BookController {
         return new ResponseEntity<>(service.create(book), HttpStatus.CREATED);
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping(value = ID)
     public ResponseEntity<Void>delete(@PathVariable Integer id){
         service.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 
+    @PutMapping(value = "/{id}")
+    ResponseEntity<Book> update(@PathVariable Integer id, @RequestBody Book book){
+        Book newBook=service.update(id, book);
+        return ResponseEntity.ok().body(newBook);
+    }
 }
