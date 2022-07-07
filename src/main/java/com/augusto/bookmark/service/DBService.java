@@ -18,7 +18,7 @@ public class DBService {
       Book b3 = new Book(null,"branca de neve",500,"link2",false);
       Book b4 = new Book(null,"percy jackson",200,"link2",true);
 
-      repository.saveAll(Arrays.asList(b1,b2));
+      repository.saveAll(Arrays.asList(b1,b2,b3,b4));
     }
 
 }
