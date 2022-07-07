@@ -22,4 +22,8 @@ public class BookService {
     public List<Book> findAllReading() {
         return repository.findAllReading();
     }
+
+    public List<Book>findAllRead(){
+        return repository.findAllRead();
+    }
 }

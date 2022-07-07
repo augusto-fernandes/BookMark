@@ -12,4 +12,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
     @Query("SELECT obj FROM Book obj WHERE obj.complete = false")
    List<Book> findAllReading();
+
+    @Query("SELECT obj FROM Book obj WHERE obj.complete = true")
+    List<Book>findAllRead();
 }

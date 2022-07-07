@@ -29,4 +29,10 @@ public class BookController {
         List<Book> list = service.findAllReading();
         return ResponseEntity.ok().body(list);
     }
+
+    @GetMapping(value = "/read")
+    public ResponseEntity<List<Book>> listRead(){
+        List<Book> list = service.findAllRead();
+        return ResponseEntity.ok().body(list);
+    }
 }
