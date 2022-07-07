@@ -14,6 +14,7 @@ public class BookService {
     @Autowired
     private BookRepository repository;
 
+
     public Book findById(Integer id){
         Optional<Book> book = repository.findById(id);
         return book.orElse(null);
@@ -35,5 +36,9 @@ public class BookService {
 
     public List<Book> findAll() {
         return repository.findAll();
+    }
+
+    public void delete(Integer id) {
+        repository.deleteById(id);
     }
 }

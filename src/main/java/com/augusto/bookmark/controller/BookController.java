@@ -16,7 +16,6 @@ public class BookController {
     @Autowired
     private BookService service;
 
-
     @GetMapping
     public ResponseEntity<List<Book>>findAll(){
         List<Book> list = service.findAll();
@@ -44,6 +43,12 @@ public class BookController {
     @PostMapping
     public ResponseEntity<Book>create(@RequestBody Book book){
         return new ResponseEntity<>(service.create(book), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void>delete(@PathVariable Integer id){
+        service.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 
