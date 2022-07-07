@@ -16,6 +16,13 @@ public class BookController {
     @Autowired
     private BookService service;
 
+
+    @GetMapping
+    public ResponseEntity<List<Book>>findAll(){
+        List<Book> list = service.findAll();
+        return ResponseEntity.ok().body(list);
+    }
+
     @GetMapping(value = "{id}")
     public ResponseEntity<Book> findById(@PathVariable Integer id){
         Book book = service.findById(id);
@@ -38,4 +45,6 @@ public class BookController {
     public ResponseEntity<Book>create(@RequestBody Book book){
         return new ResponseEntity<>(service.create(book), HttpStatus.CREATED);
     }
+
+
 }
