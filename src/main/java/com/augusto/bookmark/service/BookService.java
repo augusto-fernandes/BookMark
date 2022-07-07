@@ -14,7 +14,7 @@ public class BookService {
     private BookRepository repository;
 
     public Book findById(Integer id){
-        Optional<Book> obj = repository.findById(id);
-        return obj.orElse(null);
+        Optional<Book> book = repository.findById(id);
+        return book.orElse(null);
     }
 }

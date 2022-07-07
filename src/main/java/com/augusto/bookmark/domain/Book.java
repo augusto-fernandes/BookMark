@@ -29,6 +29,7 @@ public class Book implements Serializable {
     private String title;
     private Integer page;
     private String link;
+    private boolean complete= false;
 
     @Override
     public boolean equals(Object o) {
