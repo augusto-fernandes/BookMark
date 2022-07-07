@@ -1,6 +1,8 @@
 package com.augusto.bookmark.controller;
 
 import com.augusto.bookmark.domain.Book;
+import com.augusto.bookmark.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,8 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "books")
 public class BookController {
 
+    @Autowired
+    private BookService service;
+
     @GetMapping(value = "{id}")
     public ResponseEntity<Book> findById(@PathVariable Integer id){
-        return ResponseEntity.ok().body(new Book(1,"Harry potter",100,"link"));
+        Book book = service.findById(id);
+        return ResponseEntity.ok().body(book);
     }
 }
